@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, create_engine
+from sqlalchemy import Column, String, Integer, create_engine
 from flask_sqlalchemy import SQLAlchemy
 import os
 import json
@@ -8,7 +8,7 @@ database_path = os.environ['DATABASE_URL']
 db = SQLAlchemy()
 
 '''
-setup_db(app)
+    setup_db(app)
     binds a flask application and a SQLAlchemy service
 '''
 def setup_db(app, database_path=database_path):
@@ -19,11 +19,11 @@ def setup_db(app, database_path=database_path):
     db.create_all()
 
 '''
-
+Table
 '''
 
-class name_of_class(db.Model):
-    ___tablename__=''
+class Table(db.Model):
+    ___tablename__='table'
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
