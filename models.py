@@ -1,9 +1,11 @@
 from sqlalchemy import Column, String, Integer, create_engine
 from flask_sqlalchemy import SQLAlchemy
+from app import app
 import os
 import json
 
-database_path = os.environ['DATABASE_URL']
+database_name = "capstone"
+database_path = "postgresql://{}/{}".format('postgres:davinchi2020@localhost:5432', database_name)
 
 db = SQLAlchemy()
 
@@ -18,6 +20,7 @@ def setup_db(app, database_path=database_path):
     db.init_app(app)
     db.create_all()
 
+setup_db(app)
 '''
 Table
 '''
