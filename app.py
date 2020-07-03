@@ -10,7 +10,7 @@ def create_app(test_config=None):
 
     @app.route('/')
     def landing():
-        return 'home'
+        return 'جوسيان السافلة'
 
 
     return app
