@@ -59,7 +59,7 @@ class Person(db.Model):
     facebook_link = Column(String(120))
     seeking_job = Column(Boolean, default=False)
     profile_image = Column(String(500))
-    industry_id = Column(Integer, ForeignKey('Industries.id'), nullable=False)
+    industry_id = Column(Integer, ForeignKey('industries.id'), nullable=False)
 
     def __init__(self, name, address, city, phone, website, facebook_link, seeking_job, profile_image, industry_id):
         self.name = name
