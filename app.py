@@ -33,8 +33,8 @@ def create_app(test_config=None):
         return response
 
     @app.route('/')
-    def index():
-        return render_template('Frontend/index.html')
+    def landing_page():
+        return render_template('pages/home.html')
 
     @app.route('/persons')
     @requires_auth('get:persons')
