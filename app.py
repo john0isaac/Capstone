@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, abort, jsonify
+from flask import Flask, render_template, request, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 
@@ -33,8 +33,8 @@ def create_app(test_config=None):
         return response
 
     @app.route('/')
-    def landing_page():
-        return 'Home'
+    def index():
+        return render_template('Frontend/index.html')
 
     @app.route('/persons')
     @requires_auth('get:persons')
