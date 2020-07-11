@@ -1,6 +1,5 @@
 from sqlalchemy import Column, String, Integer, Boolean, ForeignKey, create_engine
 from flask_sqlalchemy import SQLAlchemy
-from app import app
 import os
 import json
 
@@ -13,6 +12,8 @@ db = SQLAlchemy()
     setup_db(app)
     binds a flask application and a SQLAlchemy service
 '''
+
+
 def setup_db(app, database_path=database_path):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -20,14 +21,15 @@ def setup_db(app, database_path=database_path):
     db.init_app(app)
     db.create_all()
 
-setup_db(app)
+
 '''
 Industries
 
 '''
 
+
 class Industries(db.Model):
-    ___tablename__='industries'
+    ___tablename__ = 'industries'
 
     id = Column(Integer, primary_key=True)
     industry = Column(String(120))
@@ -55,8 +57,10 @@ class Industries(db.Model):
 Info
 
 '''
+
+
 class Person(db.Model):
-    ___tablename__='person'
+    ___tablename__ = 'person'
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
@@ -83,7 +87,7 @@ class Person(db.Model):
     def insert(self):
         db.session.add(self)
         db.session.commit()
-  
+
     def update(self):
         db.session.commit()
 
