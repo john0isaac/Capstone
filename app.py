@@ -166,19 +166,6 @@ def create_app(test_config=None):
         else:
             abort(404)
 
-    @app.route('/persons/search')
-    @requires_auth('get:persons')
-    def retrive_persons(jwt):
-        selection = Person.query.order_by(Person.id).all()
-        current_persons = paginate_results(request, selection)
-        if len(current_persons) == 0:
-            abort(404)
-        return jsonify({
-            'success': True,
-            'persons': current_persons,
-            'total_persons': len(Person.query.all())
-            }), 200
-
     @app.errorhandler(400)
     def bad_request(error):
         return jsonify({
