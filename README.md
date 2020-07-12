@@ -21,6 +21,16 @@ Start by reading the section below of this README:
 I recommend following the instructions in those files in order to be able to start the project.
 
 
+## Testing
+To run the tests, run
+```
+dropdb trivia_test
+createdb trivia_test
+psql trivia_test < trivia.psql
+python test_flaskr.py
+```
+
+
 ## About the Stack
 
 I started the full stack application for you. It is desiged with some key functional areas:
