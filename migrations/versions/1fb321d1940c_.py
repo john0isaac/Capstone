@@ -48,6 +48,4 @@ def downgrade():
     sa.Column('name', sa.VARCHAR(), autoincrement=False, nullable=True),
     sa.PrimaryKeyConstraint('id', name='table_pkey')
     )
-    op.drop_table('person')
-    op.drop_table('industries')
     # ### end Alembic commands ###

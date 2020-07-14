@@ -1,5 +1,6 @@
 from sqlalchemy import Column, String, Integer, Boolean, ForeignKey, create_engine
 from flask_sqlalchemy import SQLAlchemy
+import psycopg2
 import os
 import json
 
