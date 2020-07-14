@@ -5,19 +5,6 @@
     background-color: #e9e9e9;
 }
 
-#footer {
-    color: #949494;
-    position: absolute;
-    bottom: 30px;
-    width: 98%;
-    justify-content: center;
-    text-align: center;
-
-}
-
-#footer .menu a {
-    color: inherit;
-}
 #header a {
     float: left;
     display: block;
@@ -31,6 +18,17 @@
 #header a:hover {
     background-color: #ddd;
     color: black;
+}
+
+#header input[type=text] {
+    border-radius: 20px;
+    float: left;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 16px;
+    font-size: 17px;
 }
 
 ul.menu {
@@ -52,15 +50,18 @@ ul.menu li:first-child {
     padding-left: 0;
 }
 
-#header input[type=text] {
-    border-radius: 20px;
-    float: left;
-    padding: 6px;
-    border: none;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    margin-left: 16px;
-    font-size: 17px;
+#footer {
+    color: #949494;
+    position: absolute;
+    bottom: 30px;
+    width: 98%;
+    justify-content: center;
+    text-align: center;
+
+}
+
+#footer .menu a {
+    color: inherit;
 }
 
 @media screen and (min-width: 1400px) {
