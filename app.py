@@ -34,7 +34,7 @@ def create_app(test_config=None):
 
     @app.route('/')
     def landing_page():
-        return render_template('pages/home.html')
+        return 'home'
 
     @app.route('/persons')
     @requires_auth('get:persons')
