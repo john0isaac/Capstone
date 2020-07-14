@@ -5,7 +5,7 @@ import os
 import json
 
 database_name = "capstone"
-database_path = os.environ['DATABASE_URL']
+database_path = 'postgres://lnxrjlwxsjlzpe:9be06871b7ef104bd59e69c9e52c7c211b94df1877e3d6c764a0631df2b53525@ec2-52-44-166-58.compute-1.amazonaws.com:5432/d2rr33k4aiq964'
 
 db = SQLAlchemy()
 
@@ -22,7 +22,7 @@ def setup_db(app, database_path=database_path):
     db.init_app(app)
     db.create_all()
 
-
+setup_db(app)
 '''
 Industries
 

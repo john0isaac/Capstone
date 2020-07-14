@@ -15,7 +15,7 @@ class JohnTestCase(unittest.TestCase):
         self.app = create_app()
         self.client = self.app.test_client
         self.database_name = "capstone_test"
-        self.database_path = os.environ['DATABASE_URL']
+        self.database_path = 'postgres://lnxrjlwxsjlzpe:9be06871b7ef104bd59e69c9e52c7c211b94df1877e3d6c764a0631df2b53525@ec2-52-44-166-58.compute-1.amazonaws.com:5432/d2rr33k4aiq964'
         setup_db(self.app, self.database_path)
 
         self.new_person = {
