@@ -20,17 +20,6 @@
     color: black;
 }
 
-#header input[type=text] {
-    border-radius: 20px;
-    float: left;
-    padding: 6px;
-    border: none;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    margin-left: 16px;
-    font-size: 17px;
-}
-
 ul.menu {
     line-height: 1em;
     list-style: none;
@@ -62,6 +51,17 @@ ul.menu li:first-child {
 
 #footer .menu a {
     color: inherit;
+}
+
+#header input[type=text] {
+    border-radius: 20px;
+    float: left;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 16px;
+    font-size: 17px;
 }
 
 @media screen and (min-width: 1400px) {
