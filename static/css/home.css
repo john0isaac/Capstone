@@ -58,6 +58,11 @@
     #header input[type=text] {
       border: 1px solid #ccc;      
     }
+    #footer {
+      float: none;
+      display: block;
+      text-align: center;
+    }
 }
 
 ul.menu {
@@ -78,7 +83,6 @@ ul.menu li:first-child {
     margin-left: 0;
     padding-left: 0;
 }
-/* Footer */
 
 #footer {
     color: #949494;
