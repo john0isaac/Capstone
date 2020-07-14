@@ -92,7 +92,7 @@ def create_app(test_config=None):
     def add_industry(jwt):
         body = request.get_json()
         try:
-            industry = Industry()
+            industry = Industries()
             industry.industry = body.get('industry', None)
 
             industry.insert()
@@ -154,7 +154,7 @@ def create_app(test_config=None):
     @app.route('/industries/<int:id>', methods=['DELETE'])
     @requires_auth('delete:industries')
     def delete_industry(jwt, id):
-        industry = industry.query.get(id)
+        industry = Industries.query.get(id)
         if industry:
             industry.delete()
 

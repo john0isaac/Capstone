@@ -4,7 +4,7 @@ import os
 import json
 
 database_name = "capstone"
-database_path = "postgresql://{}/{}".format('postgres:davinchi2020@0.0.0.0:5432', database_name)
+database_path = "postgresql://{}@{}/{}".format('postgres:davinchi2020','0.0.0.0:5432', database_name)
 
 db = SQLAlchemy()
 

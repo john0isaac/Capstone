@@ -24,9 +24,6 @@ I recommend following the instructions in those files in order to be able to sta
 ## Testing
 To run the tests, run
 ```
-dropdb john_test
-createdb john_test
-psql john_test < john.psql
 python test_app.py
 ```
 
