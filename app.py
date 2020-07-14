@@ -3,7 +3,6 @@ from flask import Flask, render_template, request, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 
-from models import Person, Industries
 from auth.auth import AuthError, requires_auth
 
 RESULT_PER_PAGE = 10
