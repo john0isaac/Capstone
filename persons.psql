@@ -1,0 +1,11 @@
+INSERT INTO person (id, name, address, city, phone, website, facebook_link, seeking_job, profile_image, industry_id) VALUES 
+(1, 'John Isaac', 'Mostorod', 'Cairo', '451-879-454','john0isaac.herokuapp.com', 'facebook.com/john0isaac', true, 'https://ablogtowatch.com/wp-content/uploads/2011/08/John_Isaac_2.jpg', 2 ), 
+(2, 'Marie Curie'), 
+(3, 'Albert Einstein'), 
+(4, 'Banking'), 
+(5, 'Construction'), 
+(6, 'Dairy'), 
+(7, 'Education'), 
+(8, 'Farming'), 
+(9, 'Health'), 
+(10, 'Labor')

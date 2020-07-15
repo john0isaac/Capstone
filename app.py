@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 
 from auth.auth import AuthError, requires_auth
+from models import setup_db, Person, Industries
 
 RESULT_PER_PAGE = 10
 
@@ -22,6 +23,7 @@ def paginate_results(request, selection):
 def create_app(test_config=None):
     # Create and configure the app
     app = Flask(__name__)
+    setup_db(app)
     CORS(app, resources={r"/api/*": {"origins": "*"}})
     # CORS Headers
 
@@ -36,10 +38,11 @@ def create_app(test_config=None):
         return render_template('pages/home.html')
 
     @app.route('/persons')
-    @requires_auth('get:persons')
-    def retrive_persons(jwt):
+    # @requires_auth('get:persons')
+    def retrive_persons():
         selection = Person.query.order_by(Person.id).all()
         current_persons = paginate_results(request, selection)
+
         if len(current_persons) == 0:
             abort(404)
         return jsonify({
@@ -49,8 +52,8 @@ def create_app(test_config=None):
             }), 200
 
     @app.route('/industries')
-    @requires_auth('get:industries')
-    def retrive_industries(jwt):
+    # @requires_auth('get:industries')
+    def retrive_industries():
         selection = Industries.query.order_by(Industries.id).all()
 
         if len(selection) == 0:
@@ -62,8 +65,8 @@ def create_app(test_config=None):
             }), 200
 
     @app.route('/persons', methods=['POST'])
-    @requires_auth('post:persons')
-    def add_person(jwt):
+    # @requires_auth('post:persons')
+    def add_person():
         body = request.get_json()
         try:
             person = Person()
@@ -87,8 +90,8 @@ def create_app(test_config=None):
             abort(422)
 
     @app.route('/industries', methods=['POST'])
-    @requires_auth('post:industries')
-    def add_industry(jwt):
+    # @requires_auth('post:industries')
+    def add_industry():
         body = request.get_json()
         try:
             industry = Industries()
@@ -104,8 +107,8 @@ def create_app(test_config=None):
             abort(422)
 
     @app.route('/persons/<int:id>', methods=['PATCH'])
-    @requires_auth('patch:persons')
-    def edit_inforamtion(jwt, id):
+    # @requires_auth('patch:persons')
+    def edit_inforamtion(id):
         body = request.get_json()
         person = Person.query.filter(Person.id == id).one_or_none()
 
@@ -137,8 +140,8 @@ def create_app(test_config=None):
             abort(422)
 
     @app.route('/persons/<int:id>', methods=['DELETE'])
-    @requires_auth('delete:persons')
-    def delete_person(jwt, id):
+    # @requires_auth('delete:persons')
+    def delete_person(id):
         person = Person.query.get(id)
         if person:
             person.delete()
@@ -151,8 +154,8 @@ def create_app(test_config=None):
             abort(404)
 
     @app.route('/industries/<int:id>', methods=['DELETE'])
-    @requires_auth('delete:industries')
-    def delete_industry(jwt, id):
+    # @requires_auth('delete:industries')
+    def delete_industry(id):
         industry = Industries.query.get(id)
         if industry:
             industry.delete()

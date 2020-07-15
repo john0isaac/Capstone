@@ -3,10 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 import psycopg2
 import os
 import json
-from app import app 
 
 database_name = "capstone"
-database_path = 'postgres://lnxrjlwxsjlzpe:9be06871b7ef104bd59e69c9e52c7c211b94df1877e3d6c764a0631df2b53525@ec2-52-44-166-58.compute-1.amazonaws.com:5432/d2rr33k4aiq964'
+database_path = "postgresql://{}@{}/{}".format('postgres:davinchi2020','0.0.0.0:5432', database_name)
 
 db = SQLAlchemy()
 
