@@ -147,7 +147,6 @@ def create_app(test_config=None):
             new_website = body.get('website', None)
             new_facebook_link = body.get('facebook_link', None)
             new_seeking_job = body.get('seeking_job', None)
-            new_industry_id = int(body.get('industry_id', None))
 
             person.name = new_name
             person.info = new_info
@@ -156,7 +155,6 @@ def create_app(test_config=None):
             person.website = new_website
             person.facebook_link = new_facebook_link
             person.seeking_job = new_seeking_job
-            person.industry_id = new_industry_id
             person.update()
 
             return jsonify({
