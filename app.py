@@ -71,16 +71,14 @@ def create_app(test_config=None):
         body = request.get_json()
         try:    
             new_name = body.get('name', None)
-            new_address = body.get('address', None)
             new_city = body.get('city', None)
             new_phone = body.get('phone', None)
             new_website = body.get('website', None)
             new_facebook_link = body.get('facebook_link', None)
             new_seeking_job = body.get('seeking_job', None)
-            new_profile_image = body.get('profile_image', None)
             new_industry_id = int(body.get('industry_id', None))
             
-            person = Person(name=new_name, address=new_address, city=new_city, phone=new_phone, website=new_website, facebook_link=new_facebook_link, seeking_job=new_seeking_job, profile_image=new_profile_image, industry_id=new_industry_id)
+            person = Person(name=new_name, city=new_city, phone=new_phone, website=new_website, facebook_link=new_facebook_link, seeking_job=new_seeking_job, industry_id=new_industry_id)
             person.insert()
 
             return jsonify({
@@ -118,21 +116,17 @@ def create_app(test_config=None):
         if not person:
             abort(404)
         try:
-            new_address = body.get('address', None)
             new_city = body.get('city', None)
             new_phone = body.get('phone', None)
             new_website = body.get('website', None)
             new_facebook_link = body.get('facebook_link', None)
             new_status = body.get('seeking_job', None)
-            new_profile_image = body.get('profile_image', None)
 
-            person.address = new_address
             person.city = new_city
             person.phone = new_phone
             person.website = new_website
             person.facebook_link = new_facebook_link
             person.seeking_job = new_status
-            person.profile_image = new_profile_image
             person.update()
 
             return jsonify({

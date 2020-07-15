@@ -65,24 +65,20 @@ class Person(db.Model):
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    address = Column(String(120))
     city = Column(String(120))
     phone = Column(String(120))
     website = Column(String(500))
     facebook_link = Column(String(120))
     seeking_job = Column(Boolean, default=False)
-    profile_image = Column(String(500))
     industry_id = Column(Integer, ForeignKey('industries.id'), nullable=False)
 
-    def __init__(self, name, address, city, phone, website, facebook_link, seeking_job, profile_image, industry_id):
+    def __init__(self, name, city, phone, website, facebook_link, seeking_job, industry_id):
         self.name = name
-        self.address = address
         self.city = city
         self.phone = phone
         self.website = website
         self.facebook_link = facebook_link
         self.seeking_job = seeking_job
-        self.profile_image = profile_image
         self.industry_id = industry_id
 
     def insert(self):
@@ -100,12 +96,10 @@ class Person(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'address': self.address,
             'city': self.city,
             'phone': self.phone,
             'website': self.website,
             'facebook_line': self.facebook_link,
             'seeking_job': self.seeking_job,
-            'profile_image': self.profile_image,
             'industry_id': self.industry_id
         }
