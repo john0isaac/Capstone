@@ -55,13 +55,14 @@ def create_app(test_config=None):
     # @requires_auth('get:industries')
     def retrive_industries():
         selection = Industries.query.order_by(Industries.id).all()
+        current_industries = paginate_results(request, selection)
 
         if len(selection) == 0:
             abort(404)
         return jsonify({
             'success': True,
-            'persons': selection,
-            'total_persons': len(selection)
+            'industries': current_industries,
+            'total_industries': len(selection)
             }), 200
 
     @app.route('/persons', methods=['POST'])
