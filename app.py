@@ -69,18 +69,18 @@ def create_app(test_config=None):
     # @requires_auth('post:persons')
     def add_person():
         body = request.get_json()
-        try:
-            person = Person()
-            person.name = body.get('name', None)
-            person.address = body.get('address', None)
-            person.city = body.get('city', None)
-            person.phone = body.get('phone', None)
-            person.website = body.get('website', None)
-            person.facebook_link = body.get('facebook_link', None)
-            person.seeking_job = body.get('seeking_job', None)
-            person.profile_image = body.get('profile_image', None)
-            person.industry_id = int(body.get('industry_id', None))
-
+        try:    
+            new_name = body.get('name', None)
+            new_address = body.get('address', None)
+            new_city = body.get('city', None)
+            new_phone = body.get('phone', None)
+            new_website = body.get('website', None)
+            new_facebook_link = body.get('facebook_link', None)
+            new_seeking_job = body.get('seeking_job', None)
+            new_profile_image = body.get('profile_image', None)
+            new_industry_id = int(body.get('industry_id', None))
+            
+            person = Person(name=new_name, address=new_address, city=new_city, phone=new_phone, website=new_website, facebook_link=new_facebook_link, seeking_job=new_seeking_job, profile_image=new_profile_image, industry_id=new_industry_id)
             person.insert()
 
             return jsonify({
@@ -93,16 +93,18 @@ def create_app(test_config=None):
     @app.route('/industries', methods=['POST'])
     # @requires_auth('post:industries')
     def add_industry():
-        body = request.get_json()
         try:
-            industry = Industries()
-            industry.industry = body.get('industry', None)
+            body = request.get_json()
+            new_industry = body.get('industry', None)
 
+            print(new_industry)
+            
+            industry = Industries(industry=new_industry) 
             industry.insert()
 
             return jsonify({
                 'success': True,
-                'person': industry
+                'industry': industry
             }), 200
         except:
             abort(422)
