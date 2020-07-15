@@ -83,7 +83,7 @@ def create_app(test_config=None):
 
             return jsonify({
                 'success': True,
-                'person': person
+                'person': person.format()
             }), 200
         except:
             abort(422)
@@ -94,15 +94,13 @@ def create_app(test_config=None):
         try:
             body = request.get_json()
             new_industry = body.get('industry', None)
-
-            print(new_industry)
             
             industry = Industries(industry=new_industry) 
             industry.insert()
 
             return jsonify({
                 'success': True,
-                'industry': industry
+                'industry': industry.format()
             }), 200
         except:
             abort(422)
