@@ -65,6 +65,7 @@ class Person(db.Model):
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
+    info = Column(String)
     city = Column(String(120))
     phone = Column(String(120))
     website = Column(String(500))
@@ -72,8 +73,9 @@ class Person(db.Model):
     seeking_job = Column(Boolean, default=False)
     industry_id = Column(Integer, ForeignKey('industries.id'), nullable=False)
 
-    def __init__(self, name, city, phone, website, facebook_link, seeking_job, industry_id):
+    def __init__(self, name, info, city, phone, website, facebook_link, seeking_job, industry_id):
         self.name = name
+        self.info = info
         self.city = city
         self.phone = phone
         self.website = website
@@ -96,6 +98,7 @@ class Person(db.Model):
         return {
             'id': self.id,
             'name': self.name,
+            'info': self.info,
             'city': self.city,
             'phone': self.phone,
             'website': self.website,

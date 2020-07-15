@@ -38,7 +38,7 @@ def create_app(test_config=None):
         return render_template('pages/home.html')
 
     @app.route('/persons')
-    # @requires_auth('get:persons')
+    @requires_auth('get:persons')
     def retrive_persons():
         selection = Person.query.order_by(Person.id).all()
         current_persons = paginate_results(request, selection)
@@ -66,11 +66,12 @@ def create_app(test_config=None):
             }), 200
 
     @app.route('/persons', methods=['POST'])
-    # @requires_auth('post:persons')
+    @requires_auth('post:persons')
     def add_person():
         body = request.get_json()
         try:    
             new_name = body.get('name', None)
+            new_info = body.get('info', None)
             new_city = body.get('city', None)
             new_phone = body.get('phone', None)
             new_website = body.get('website', None)
@@ -78,7 +79,7 @@ def create_app(test_config=None):
             new_seeking_job = body.get('seeking_job', None)
             new_industry_id = int(body.get('industry_id', None))
             
-            person = Person(name=new_name, city=new_city, phone=new_phone, website=new_website, facebook_link=new_facebook_link, seeking_job=new_seeking_job, industry_id=new_industry_id)
+            person = Person(name=new_name, info=new_info, city=new_city, phone=new_phone, website=new_website, facebook_link=new_facebook_link, seeking_job=new_seeking_job, industry_id=new_industry_id)
             person.insert()
 
             return jsonify({
@@ -105,37 +106,68 @@ def create_app(test_config=None):
         except:
             abort(422)
 
+    @app.route('/persons/search', methods=['POST'])
+    @requires_auth('post:persons')
+    def search_persons():
+        body = request.get_json()
+        search_term = body.get('search', None)
+        current_industry = []
+        try:
+            search = '%{}%'.format(search_term)
+            selection = Person.query.order_by(Person.industry_id).filter(Person.info.ilike(search)).all()
+            persons = paginate_results(request, selection)
+
+            industries = Person.query.with_entities(Person.industry_id).order_by(Person.industry_id).filter(Person.info.ilike(search)).all()
+            for industry in industries:
+                for innerlist in industry:
+                    current_industry.append(innerlist)
+
+            return jsonify({
+                'success': True,
+                'persons': persons,
+                'current_industry': current_industry,
+                'total_persons': len(selection)
+                })
+        except:
+            abort(422)
+
     @app.route('/persons/<int:id>', methods=['PATCH'])
-    # @requires_auth('patch:persons')
+    @requires_auth('patch:persons')
     def edit_inforamtion(id):
         body = request.get_json()
-        person = Person.query.filter(Person.id == id).one_or_none()
+        person = Person.query.get(id)
 
         if not person:
             abort(404)
         try:
+            new_name = body.get('name', None)
+            new_info = body.get('info', None)
             new_city = body.get('city', None)
             new_phone = body.get('phone', None)
             new_website = body.get('website', None)
             new_facebook_link = body.get('facebook_link', None)
-            new_status = body.get('seeking_job', None)
+            new_seeking_job = body.get('seeking_job', None)
+            new_industry_id = int(body.get('industry_id', None))
 
+            person.name = new_name
+            person.info = new_info
             person.city = new_city
             person.phone = new_phone
             person.website = new_website
             person.facebook_link = new_facebook_link
-            person.seeking_job = new_status
+            person.seeking_job = new_seeking_job
+            person.industry_id = new_industry_id
             person.update()
 
             return jsonify({
                 'success': True,
-                'persons': Person.query.all()
+                'persons': person.id
             }), 200
         except:
             abort(422)
 
     @app.route('/persons/<int:id>', methods=['DELETE'])
-    # @requires_auth('delete:persons')
+    @requires_auth('delete:persons')
     def delete_person(id):
         person = Person.query.get(id)
         if person:
