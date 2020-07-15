@@ -1,11 +1,11 @@
-INSERT INTO industries (id, industry) VALUES 
-(1, 'Accountants'), 
-(2, 'Agriculture'), 
-(3, 'Airlines'), 
-(4, 'Banking'), 
-(5, 'Construction'), 
-(6, 'Dairy'), 
-(7, 'Education'), 
-(8, 'Farming'), 
-(9, 'Health'), 
-(10, 'Labor')
+INSERT INTO industries (industry) VALUES 
+('Accountants'), 
+('Agriculture'), 
+('Airlines'), 
+('Banking'), 
+('Construction'), 
+('Dairy'), 
+('Education'), 
+('Farming'), 
+('Health'), 
+('Labor')

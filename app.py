@@ -52,7 +52,7 @@ def create_app(test_config=None):
             }), 200
 
     @app.route('/industries')
-    # @requires_auth('get:industries')
+    @requires_auth('get:industries')
     def retrive_industries():
         selection = Industries.query.order_by(Industries.id).all()
         current_industries = paginate_results(request, selection)
@@ -89,7 +89,7 @@ def create_app(test_config=None):
             abort(422)
 
     @app.route('/industries', methods=['POST'])
-    # @requires_auth('post:industries')
+    @requires_auth('post:industries')
     def add_industry():
         try:
             body = request.get_json()
@@ -149,7 +149,7 @@ def create_app(test_config=None):
             abort(404)
 
     @app.route('/industries/<int:id>', methods=['DELETE'])
-    # @requires_auth('delete:industries')
+    @requires_auth('delete:industries')
     def delete_industry(id):
         industry = Industries.query.get(id)
         if industry:
