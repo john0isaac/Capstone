@@ -39,7 +39,7 @@ def create_app(test_config=None):
 
     @app.route('/persons')
     @requires_auth('get:persons')
-    def retrive_persons():
+    def retrive_persons(jwt):
         selection = Person.query.order_by(Person.id).all()
         current_persons = paginate_results(request, selection)
 
@@ -52,8 +52,8 @@ def create_app(test_config=None):
             }), 200
 
     @app.route('/industries')
-    @requires_auth('get:industries')
-    def retrive_industries():
+    @requires_auth('get:industries ')
+    def retrive_industries(jwt):
         selection = Industries.query.order_by(Industries.id).all()
         current_industries = paginate_results(request, selection)
 
@@ -67,7 +67,7 @@ def create_app(test_config=None):
 
     @app.route('/persons', methods=['POST'])
     @requires_auth('post:persons')
-    def add_person():
+    def add_person(jwt):
         body = request.get_json()
         try:    
             new_name = body.get('name', None)
@@ -91,7 +91,7 @@ def create_app(test_config=None):
 
     @app.route('/industries', methods=['POST'])
     @requires_auth('post:industries')
-    def add_industry():
+    def add_industry(jwt):
         try:
             body = request.get_json()
             new_industry = body.get('industry', None)
@@ -108,7 +108,7 @@ def create_app(test_config=None):
 
     @app.route('/persons/search', methods=['POST'])
     @requires_auth('post:persons')
-    def search_persons():
+    def search_persons(jwt):
         body = request.get_json()
         search_term = body.get('search', None)
         current_industry = []
@@ -133,7 +133,7 @@ def create_app(test_config=None):
 
     @app.route('/persons/<int:id>', methods=['PATCH'])
     @requires_auth('patch:persons')
-    def edit_inforamtion(id):
+    def edit_inforamtion(jwt, id):
         body = request.get_json()
         person = Person.query.get(id)
 
@@ -166,7 +166,7 @@ def create_app(test_config=None):
 
     @app.route('/persons/<int:id>', methods=['DELETE'])
     @requires_auth('delete:persons')
-    def delete_person(id):
+    def delete_person(jwt, id):
         person = Person.query.get(id)
         if person:
             person.delete()
@@ -180,7 +180,7 @@ def create_app(test_config=None):
 
     @app.route('/industries/<int:id>', methods=['DELETE'])
     @requires_auth('delete:industries')
-    def delete_industry(id):
+    def delete_industry(jwt, id):
         industry = Industries.query.get(id)
         if industry:
             industry.delete()

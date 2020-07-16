@@ -2,4 +2,4 @@ venv/
 .vscode/
 __pycache__/
 tokens.txt
-setup.psql
+name.txt

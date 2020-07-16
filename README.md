@@ -22,8 +22,10 @@ I recommend following the instructions in those files in order to be able to sta
 
 
 ## Testing
-To run the tests, run
+To run the tests you should firstly set up the database then, run 
 ```
+dropdb capstone_test
+createdb capstone_test
 python test_app.py
 ```
 

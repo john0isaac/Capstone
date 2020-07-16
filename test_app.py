@@ -14,13 +14,26 @@ class JohnTestCase(unittest.TestCase):
         """Define test variables and initialize app."""
         self.app = create_app()
         self.client = self.app.test_client
-        self.database_name = "capstone_test"
+        database_name = "capstone_test"
         self.database_path = "postgresql://{}@{}/{}".format('postgres:davinchi2020','0.0.0.0:5432', database_name)
         setup_db(self.app, self.database_path)
 
         self.new_person = {
-            
+            'name': 'Hossam Okasha',
+            'info': 'young engineer who is willing to learn new things',
+            'city': 'Giza',
+            'phone': '343-686-594',
+            'website': 'hossam0okasha.herokuapp.com',
+            'facebook_link': 'www.facebook.com/hossam0okasha',
+            'seeking_job': True,
+            'industry_id': 1
         }
+
+        self.new_industry = {
+            'industry': 'Engineering',
+        }
+        self.manager = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImgwUFNENjhqQVhYa1ZudDZPeW9RdCJ9.eyJpc3MiOiJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA2OTE2NzQ1MDU5MzIyOTEwMzY3IiwiYXVkIjpbImpvaG4waXNhYWMiLCJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU5NDg2MzE3OSwiZXhwIjoxNTk0OTQ5NTc5LCJhenAiOiJhdm1iUlhBY0NjVGJwZDJaS3ljUk5SZ2dUSFJqblJqNCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6aW5kdXN0cmllcyIsImRlbGV0ZTpwZXJzb25zIiwiZ2V0OmluZHVzdHJpZXMgIiwiZ2V0OnBlcnNvbnMiLCJwYXRjaDpwZXJzb25zIiwicG9zdDppbmR1c3RyaWVzIiwicG9zdDpwZXJzb25zIl19.cg0fS7-I2yMT0_xn2Pu_S5H_sPCE2AligO7nXMuXIIu-JNciB_W64er1XGXl7OdGWisQ_A1yW6bk1qwZ0w7WnUg1fF86C7FrEf7sCdp3Gf4kMeM3wCAkZ9vD2irg0h1ISkDzlh3NEcFnZDggHDY_lJ6rNfX-f6ZLsUBqE9nJpM5R0sgpUnTSZI_fBZy2iT4veedwkwyXEtzPTs44x2GWPW8DXp6xPN1FAuZelW75swCwS8gF1FgCmcz4eb-tfYBUJ758FVIwU6SFmw4NfKSA02phaUkRgR_Ztx7IFgfixAL1vvQWjRX9f4wnQoeHurLTRVP5qWzwUy8EvnZ_09tQlQ'
+        self.person = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImgwUFNENjhqQVhYa1ZudDZPeW9RdCJ9.eyJpc3MiOiJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA3OTkyMDkxOTg1MzY4MTQ0NTExIiwiYXVkIjpbImpvaG4waXNhYWMiLCJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU5NDg2MzI0OCwiZXhwIjoxNTk0OTQ5NjQ4LCJhenAiOiJhdm1iUlhBY0NjVGJwZDJaS3ljUk5SZ2dUSFJqblJqNCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6cGVyc29ucyIsImdldDpwZXJzb25zIiwicGF0Y2g6cGVyc29ucyIsInBvc3Q6cGVyc29ucyJdfQ.PMmNWzFOxcLe7G5bbTDGxixKrzu4T9sxIHOpBuvC2SMAxUqODzGd0KENo5eMnsQUC2ujLfraoXXphZVek2kZCurkmU2VAO-OOzCynv5diANOjQ7Gb1YTlGcDuqhztg2g_rdqs-zsMsoJ4X4zKxcX8hrVY6mQiQCLgR1HkDIBa0uoo4jjjuGTwSdjqfx1AxTKcozrHSQiw6SM87Wi_AsHDmhbRosIsgWg6gz4LraJ8UVGwkGCRk7VNQUvrc1h8MoY4Lv59Aj1goPhMYbkstbqqDOkxsbAp6Jpm6whySh0wKXH-k4W5157QM53uvRuZXIrBM45GuVTK91_5NfQ1bkIXg'
         # binds the app to the current context
         with self.app.app_context():
             self.db = SQLAlchemy()
@@ -32,146 +45,80 @@ class JohnTestCase(unittest.TestCase):
         """Executed after each test"""
         pass
 
-    """
-    TODO
-    Write at least one test for each test for successful operation and for expected errors.
-    """
-    def test_retrive_persons(self):
-        """Test retrieve persons"""
-        res = self.client().get('/persons')
+    
+    def test_404_no_persons_found_to_retrieve(self):
+        """Test 404 no persons found to retrieve"""
+        res = self.client().get('/persons', headers={'Authorization': 'Bearer ' +self.manager})
         data = json.loads(res.data)
-        
-        self.assertEqual(res.status_code, 200)
-        self.assertEqual(data['success'], True)
-        self.assertTrue(data['persons'])
-        self.assertTrue(data['total_persons'])
 
-    def test_404_no_data_found_to_retrieve(self):
-        """Test 405 no data found to retrieve"""
-        res = self.client().get('/persons')
+        self.assertEqual(res.status_code, 404)
+        self.assertEqual(data['success'], False)
+        self.assertEqual(data['message'], 'resourse not found')
+    
+    def test_404_no_industries_found_to_retrieve(self):
+        """Test 404 no data found to retrieve"""
+        res = self.client().get('/industries', headers={'Authorization': 'Bearer ' +self.manager})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 404)
         self.assertEqual(data['success'], False)
         self.assertEqual(data['message'], 'resourse not found')
 
-    def test_retrieve_questions(self):
-        """Test retrieve questions"""
-        res = self.client().get('/questions')
+    def test_create_new_industry(self):
+        """test create new question"""
+        res = self.client().post('/industries', headers={'Authorization': 'Bearer ' +self.manager}, json=self.new_industry)
         data = json.loads(res.data)
-        
-        self.assertEqual(res.status_code, 200)
-        self.assertEqual(data['success'], True)
-        self.assertTrue(data['questions'])
-        self.assertEqual(data['total_questions'], 19)
-        self.assertTrue(data['categories'])
-        self.assertTrue(data['current_category'])
-    
-    def test_405_using_wrong_method_to_retrieve_questions(self):
-        """Test 405 using wrong method to retrieve questions"""
-        res = self.client().patch('/questions')
-        data = json.loads(res.data)
-
-        self.assertEqual(res.status_code, 405)
-        self.assertEqual(data['success'], False)
-        self.assertEqual(data['message'], 'method not allowed')
-
-    def test_delete_question(self):
-        """test delete question"""
-        res = self.client().delete('/questions/4')
-        data = json.loads(res.data)
-
-        question = Question.query.filter(Question.id == 4).one_or_none()
 
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
-        self.assertEqual(question, None)
-    
-    def test_422_delete_nonexistent_question(self):
-        """test 422 delete nonexistent question"""
-        res = self.client().delete('/questions/10000')
+        self.assertTrue(data['industry'])
+
+    def test_422_sending_unprocessable_data_to_industries(self):
+        """test 422 sending unprocessable data to industries"""
+        res = self.client().post('/industries', headers={'Authorization': 'Bearer ' +self.manager})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 422)
         self.assertEqual(data['success'], False)
-        self.assertEqual(data['message'], 'unprocessable')
+        self.assertEqual(data['message'], 'unprocessable')   
 
-    def test_create_new_question(self):
-        """test create new question"""
-        res = self.client().post('/questions', json=self.new_question)
+    def test_create_new_person(self):
+        """test create new person"""
+        res = self.client().post('/persons', headers={'Authorization': 'Bearer ' +self.person}, json=self.new_person)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
+        self.assertTrue(data['person'])
 
-    def test_405_creation_not_allowed(self):
-        """test 405 creation not allowed"""
-        res = self.client().post('/questions/45', json=self.new_question)
+    def test_422_sending_unprocessable_data_to_persons(self):
+        """test 422 sending unprocessable data to persons"""
+        res = self.client().post('/persons', headers={'Authorization': 'Bearer ' +self.person})
         data = json.loads(res.data)
 
-        self.assertEqual(res.status_code, 405)
+        self.assertEqual(res.status_code, 422)
         self.assertEqual(data['success'], False)
-        self.assertEqual(data['message'], 'method not allowed')
+        self.assertEqual(data['message'], 'unprocessable') 
 
-    def test_get_specefic_questions_With_results(self):
-        """Test get specific questions with results"""
-        res = self.client().post('/questions/search', json={'searchTerm': 'pyramid'})
+    def test_retrive_industry(self):
+        """Test retrieve industry"""
+        res = self.client().get('/industries', headers={'Authorization': 'Bearer ' +self.manager})
         data = json.loads(res.data)
-
+        
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
-        self.assertTrue(len(data['questions']))
-        self.assertTrue(len(data['current_category']))
-        self.assertTrue(data['total_questions'])
+        self.assertTrue(data['industries'])
+        self.assertTrue(data['total_industries'])
 
-    def test_get_specefic_questions_Without_results(self):
-        """Test get specific questions without results"""
-        res = self.client().post('/questions/search', json={'searchTerm': 'jfkf'})
+    def test_retrive_persons(self):
+        """Test retrieve persons"""
+        res = self.client().get('/persons', headers={'Authorization': 'Bearer ' +self.manager})
         data = json.loads(res.data)
-
+        
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
-        self.assertEqual(len(data['questions']), 0)
-        self.assertEqual(len(data['current_category']), 0)
-        self.assertEqual(data['total_questions'], 0)
-    
-    def test_get_questions_by_category(self):
-        """Test get questions by category"""
-        res = self.client().get('/categories/1/questions')
-        data = json.loads(res.data)
-
-        self.assertEqual(res.status_code, 200)
-        self.assertEqual(data['success'], True)
-        self.assertTrue(len(data['questions']))
-        self.assertEqual(data['current_category'], 1)
-        self.assertTrue(data['total_questions'])
-
-    def test_405_wrong_method_to_get_questions_by_category(self):
-        """Test 405 wrong method to get questions by category"""
-        res = self.client().post('/categories/1/questions')
-        data = json.loads(res.data)
-
-        self.assertEqual(res.status_code, 405)
-        self.assertEqual(data['success'], False)
-        self.assertEqual(data['message'], 'method not allowed')
-
-    def test_get_question_to_play(self):
-        """"Test get question to play"""
-        res = self.client().post('/quizzes',  json={"previous_questions": [], "quiz_category": {'id': 1, 'type': 'Science'}})
-        data = json.loads(res.data)
-
-        self.assertEqual(res.status_code, 200)
-        self.assertEqual(data['success'], True)
-        self.assertTrue(len(data['question']))
-
-    def test_400_for_requesting_nonexistent_category(self):
-        """Test 400 for requesting nonexistent category"""
-        res = self.client().post('/quizzes', json={"previous_questions": [], "quiz_category": {'id': 10, 'type': 'Economic'}})
-        data = json.loads(res.data)
-
-        self.assertEqual(res.status_code, 400)
-        self.assertEqual(data['success'], False)
-        self.assertEqual(data['message'], 'bad request')
+        self.assertTrue(data['persons'])
+        self.assertTrue(data['total_persons'])
 
 # Make the tests conveniently executable
 if __name__ == "__main__":
