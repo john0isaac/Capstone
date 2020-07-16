@@ -32,11 +32,11 @@
 }
 
 img {
-    left: 50%;
     position: absolute;
-    top: 50%;
-    width: 533px;
-    height: 949px;
+    width: 430px;
+    height:750px;
+    top:10%;
+    left: 38%;
 }
 
 ul.menu {
@@ -98,6 +98,13 @@ ul.menu li:first-child {
     }
     #header input[type=text] {
       border: 1px solid #ccc;      
+    }
+    img {
+        position: absolute;
+        width: 250px;
+        height:400px;
+        top:15%;
+        left: 25%;
     }
     #footer {
       float: none;
