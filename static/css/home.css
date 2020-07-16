@@ -31,6 +31,14 @@
     font-size: 17px;
 }
 
+img {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    width: 533px;
+    height: 949px;
+}
+
 ul.menu {
     line-height: 1em;
     list-style: none;
