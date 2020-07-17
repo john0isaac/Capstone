@@ -1,3 +1,15 @@
+INSERT INTO industries (industry) VALUES 
+('Accountants'), 
+('Agriculture'), 
+('Airlines'), 
+('Banking'), 
+('Construction'), 
+('Dairy'), 
+('Education'), 
+('Farming'), 
+('Health'), 
+('Labor');
+
 INSERT INTO person (name, info, city, phone, website, facebook_link, seeking_job, industry_id) VALUES 
 ('John Isaac', 'I like reading books a lot and i like going to the institue of arts to watch cute things', 'Cairo', '451-879-454','john0isaac.herokuapp.com', 'www.facebook.com/john0isaac', true, 3), 
 ('Marie Curie', 'I like playing in my labrotory with chemical stuff to discover new things', 'Russia', '232-435-235', 'marie0curie.herokuapp.com', 'www.facebook.com/marie0curie', false, 2), 

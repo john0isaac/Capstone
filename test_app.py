@@ -4,7 +4,7 @@ import json
 from flask_sqlalchemy import SQLAlchemy
 
 from app import create_app
-from models import setup_db, Person, Industries
+from models import setup_db
 
 
 class JohnTestCase(unittest.TestCase):
