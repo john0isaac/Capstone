@@ -133,149 +133,107 @@ And Authentication Errors 401, 403
 }
 ```
 
-**GET /categories/{category.id}/questions**
+**POST /persons/search**
 
 * General:
 
-  - Fetches The current category id, a list of questions inside the category every question consists of a dictionry including answer, category, difficulty, id, question and total number of questions
-  - Request Arguments: Category ID
-  - Returns: A list of questions, number of total questions, current category and categories, success value.
-* Sample:`curl http://127.0.0.1:5000/category/1/questions`
+  - Search for any person using the submitted search term which is a substring of the information.
+  - Request Arguments: Search 
+  - Returns: current industry, person details, total persons, and success value.
+* Sample:`curl -H "Authorization: Bearer ${Person}" https://john0isaac.herokuapp.com/persons/search -X POST -H "Content-Type: application/json" -d '{"search": "labrotory"}'`
 
 ```JSON
 {
-"current_category": 1,
-  "questions": [
-    {
-      "answer": "The Liver",
-      "category": 1,
-      "difficulty": 4,
-      "id": 20,
-      "question": "What is the heaviest organ in the human body?"
-    },
-    {
-      "answer": "Alexander Fleming",
-      "category": 1,
-      "difficulty": 3,
-      "id": 21,
-      "question": "Who discovered penicillin?"
-    },
-    {
-      "answer": "Blood",
-      "category": 1,
-      "difficulty": 4,
-      "id": 22,
-      "question": "Hematology is a branch of medicine involving the study of what?"
-    }
-  ],
-  "success": true,
-  "total_questions": 3
+  "current_industry":[2],
+  "persons":[
+    {"city":"Russia","facebook_line":"www.facebook.com/marie0curie","id":2,"industry_id":2,"info":"I like playing in my labrotory with chemical stuff to discover new things","name":"Marie Curie","phone":"232-435-235","seeking_job":false,"website":"marie0curie.herokuapp.com"}
+    ],
+    "success":true,
+    "total_persons":1
 }
 ```
 
-**DELETE /questions/{question.id}**
+**POST /industries**
 
 * General:
 
-  - Deletes a certain question by a given ID if exists
-  - Request Arguments: Question id
-  - Returns: success value.
-* Sample:`curl http://127.0.0.1:5000/questions/23 -X DELETE`
+  - Creates a new industry using the submitted industry.
+  - Request Arguments: industry
+  - Returns: Added industry, and success value.
+* Sample:`curl -H "Authorization: Bearer ${Manager}" https://john0isaac.herokuapp.com/industries -X POST -H "Content-Type: application/json" -d '{"industry":"Food"}'`
 
 ```JSON
 {
-  "success": true
-}
-```
-
-
-**POST /questions**
-
-* General:
-
-  - Creates a new question using the submitted question and answer text, difficulty and category score.
-  - Request Arguments: question, answer, category, difficulty
-  - Returns: success value.
-* Sample:`curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d '{"question": "What is the biggest pyramid?","answer": "The great pyramid", "category": 4, "difficulty": 2 }'`
-
-```JSON
-{
-  "success": true
-}
-```
-
-**POST /questions/search**
-
-* General:
-
-  - Search for any question using the submitted search term which is a substring of the question.
-  - Request Arguments: Search Term
-  - Returns: current category, question, answer, category, difficulty, id, success value, total questions.
-* Sample:`curl -H "Authorization: Bearer ${Manager}" https://john0isaac.herokuapp.com/questions/search -X POST -H "Content-Type: application/json" -d '{"search": "pyramid"}'`
-
-```JSON
-{
-"current_category": [
-    4
-  ],
-  "questions": [
-    {
-      "answer": "The great pyramid",
-      "category": 4,
-      "difficulty": 2,
-      "id": 25,
-      "question": "What is the biggest pyramid?"
-    }
-  ],
-  "success": true,
-  "total_questions": 1
-}
-```
-
-
-
-**POST /quizzes**
-
-* General:
-
-  - Gets questions to play the quiz.
-  - Request Arguments: Previous questions, Quiz category 
-  - Returns: success value, queestion, answer, category, difficulty, question id.
-* Sample:`curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json" -d '{"previous_questions": [], "quiz_category": {"id": 1, "type": "Science"}}'`
-
-```JSON
-{
- "question": {
-    "answer": "Alexander Fleming",
-    "category": 1,
-    "difficulty": 3,
-    "id": 21,
-    "question": "Who discovered penicillin?"
+  "industry":
+  {
+    "id":11,
+    "industry":"Food"
   },
-  "success": true
+  "success":true
 }
 ```
-curl http://127.0.0.1:5000/persons/14 -X PATCH -H "Content-Type: application/json" -d '{"seeking_job":true}'
 
-curl http://127.0.0.1:5000/persons/14 -X PATCH -H "Content-Type: application/json" -d '{"seeking_job":false, "industry_id":23}'
+**POST /persons**
 
+* General:
 
- curl http://127.0.0.1:5000/persons/14 -X PATCH -H "Content-Type: application/json" -d '{"seeking_job":true, "industry_id":23}'
+  - Creates a new person using the submitted person information.
+  - Request Arguments: Person
+  - Returns: Added Person, and success value.
+* Sample:`curl -H "Authorization: Bearer ${Person}" https://john0isaac.herokuapp.com/persons -X POST -H "Content-Type: application/json" -d '{"name":"Jamie Sole", "city":"New Jersy", "phone":"864-029-546", "website":"jamie0sole.herokuapp.com", "facebook_link":"www.facebook.com/jamie0sole", "seeking_job":true, "industry_id":8}'`
 
-curl http://127.0.0.1:5000/persons/14 -X PATCH -H "Content-Type: application/json" -d '{"name":"tata mama", "city":"New Jersy", "phone":"864-029-546", "website":"tata0mama.herokuapp.com", "facebook_link":"www.facebook.com/tata0mama", "seeking_job":true, "industry_id":23, "info": "hey there iam using whatsapp"}'
+```JSON
+{
+  "person":{
+    "city":"New Jersy","facebook_line":"www.facebook.com/jamie0sole","id":5,"industry_id":8,"info":null,"name":"Jamie Sole","phone":"864-029-546","seeking_job":true,"website":"jamie0sole.herokuapp.com"
+    },
+    "success":true
+  }
+```
 
-curl http://127.0.0.1:5000/persons/14 -X PATCH -H "Content-Type: application/json" -d '{"seeking_job":true}'
+**PATCH /Persons/{person.id}**
 
-curl http://127.0.0.1:5000/persons/search -X POST -H "Content-Type: application/json" -d '{"search":"whatsapp"}'
+* General:
 
-curl http://127.0.0.1:5000/persons/14 -X PATCH -H "Content-Type: application/json" -d '{"name":"tata mama", "city":"New Jersy", "phone":"864-029-546", "website":"tata0mama.herokuapp.com", "facebook_link":"www.facebook.com/tata0mama", "seeking_job":false, "industry_id":23, "info": "hey there iam using whatsapp"}'
+  - Edits a certain person by a given ID if exists
+  - Request Arguments: Person id, Change in data
+  - Returns: Person's id, success value.
+* Sample:`curl -H "Authorization: Bearer ${Person}" https://john0isaac.herokuapp.com/persons/5 -X PATCH -H "Content-Type: application/json" -d '{"info": "hey there iam using whatsapp"}'`
 
-curl http://127.0.0.1:5000/persons -X POST -H "Content-Type: application/json" -d '{"name":"tata mama", "city":"New Jersy", "phone":"864-029-546", "website":"tata0mama.herokuapp.com", "facebook_link":"www.facebook.com/tata0mama", "seeking_job":true, "industry_id":23}'
+```JSON
+{
+  "persons":5,
+  "success":true
+}
+```
 
-curl http://127.0.0.1:5000/persons/search -X POST -H "Content-Type: application/json" -d '{"search":"like"}'
+**Delete /Persons/{person.id}**
 
-curl http://127.0.0.1:5000/industries -X POST -H "Content-Type: application/json" -d '{"industry":"toto"}'
+* General:
 
-curl http://127.0.0.1:5000/industries?page=2
+  - Deletes a certain person by a given ID if exists
+  - Request Arguments: Person id
+  - Returns: Person's id, success value.
+* Sample:`curl -H "Authorization: Bearer ${Person}" https://john0isaac.herokuapp.com/persons/5 -X DELETE`
 
-curl http://127.0.0.1:5000/industries
+```JSON
+{
+  "delete":5,
+  "success":true
+}
+```
+**Delete /Industries/{industry.id}**
+
+* General:
+
+  - Deletes a certain industry by a given ID if exists
+  - Request Arguments: Industry id
+  - Returns: Industry's id, success value.
+* Sample:`curl -H "Authorization: Bearer ${Manager}" https://john0isaac.herokuapp.com/industries/11 -X DELETE`
+
+```JSON
+{
+  "delete":11,
+  "success":true
+}
+```
