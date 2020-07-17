@@ -95,16 +95,45 @@ And Authentication Errors 401, 403
 ```JSON
 {
   "industries":[
-    {"id":1,"industry":"Accountants"},
-    {"id":2,"industry":"Agriculture"},
-    {"id":3,"industry":"Airlines"},
-    {"id":4,"industry":"Banking"},
-    {"id":5,"industry":"Construction"},
-    {"id":6,"industry":"Dairy"},
-    {"id":7,"industry":"Education"},
-    {"id":8,"industry":"Farming"},
-    {"id":9,"industry":"Health"},
-    {"id":10,"industry":"Labor"}
+    {
+      "id":1,
+      "industry":"Accountants"
+      },
+    {
+      "id":2,"industry":"Agriculture"
+      },
+    {
+      "id":3,
+      "industry":"Airlines"
+      },
+    {
+      "id":4,
+      "industry":"Banking"
+      },
+    {
+      "id":5,
+      "industry":"Construction"
+      },
+    {
+      "id":6,
+      "industry":"Dairy"
+      },
+    {
+      "id":7,
+      "industry":"Education"
+      },
+    {
+      "id":8,
+      "industry":"Farming"
+      },
+    {
+      "id":9,
+      "industry":"Health"
+      },
+    {
+      "id":10,
+      "industry":"Labor"
+      }
     ],
   "success":true,
   "total_industries":10
@@ -123,10 +152,50 @@ And Authentication Errors 401, 403
 ```JSON
 {
   "persons":[
-    {"city":"Cairo","facebook_line":"www.facebook.com/john0isaac","id":1,"industry_id":3,"info":"I like reading books a lot and i like going to the institue of arts to watch cute things","name":"John Isaac","phone":"451-879-454","seeking_job":true,"website":"john0isaac.herokuapp.com"},
-    {"city":"Russia","facebook_line":"www.facebook.com/marie0curie","id":2,"industry_id":2,"info":"I like playing in my labrotory with chemical stuff to discover new things","name":"Marie Curie","phone":"232-435-235","seeking_job":false,"website":"marie0curie.herokuapp.com"},
-    {"city":"America","facebook_line":"www.facebook.com/albert0einstein","id":3,"industry_id":1,"info":"I like the concept of time and that it is relative to other things can be different","name":"Albert Einstein","phone":"294-234-233","seeking_job":false,"website":"albert0einstein.herokuapp.com"},
-    {"city":"Ohio","facebook_line":"www.facebook.com/james0charles","id":4,"industry_id":4,"info":"My mother used to say to me that one day i will be an amazing man","name":"James Charles","phone":"342-644-646","seeking_job":true,"website":"james0charles.herokuapp.com"}
+    {
+      "city":"Cairo",
+      "facebook_line":"www.facebook.com/john0isaac",
+      "id":1,
+      "industry_id":3,
+      "info":"I like reading books a lot and i like going to the institue of arts to watch cute things",
+      "name":"John Isaac",
+      "phone":"451-879-454",
+      "seeking_job":true,
+      "website":"john0isaac.herokuapp.com"
+      },
+    {
+      "city":"Russia",
+      "facebook_line":"www.facebook.com/marie0curie",
+      "id":2,
+      "industry_id":2,
+      "info":"I like playing in my labrotory with chemical stuff to discover new things",
+      "name":"Marie Curie",
+      "phone":"232-435-235",
+      "seeking_job":false,
+      "website":"marie0curie.herokuapp.com"
+      },
+    {
+      "city":"America",
+      "facebook_line":"www.facebook.com/albert0einstein",
+      "id":3,
+      "industry_id":1,
+      "info":"I like the concept of time and that it is relative to other things can be different",
+      "name":"Albert Einstein",
+      "phone":"294-234-233",
+      "seeking_job":false,
+      "website":"albert0einstein.herokuapp.com"
+      },
+    {
+      "city":"Ohio",
+      "facebook_line":"www.facebook.com/james0charles",
+      "id":4,
+      "industry_id":4,
+      "info":"My mother used to say to me that one day i will be an amazing man",
+      "name":"James Charles",
+      "phone":"342-644-646",
+      "seeking_job":true,
+      "website":"james0charles.herokuapp.com"
+      }
     ],
   "success":true,
   "total_persons":4
@@ -146,10 +215,20 @@ And Authentication Errors 401, 403
 {
   "current_industry":[2],
   "persons":[
-    {"city":"Russia","facebook_line":"www.facebook.com/marie0curie","id":2,"industry_id":2,"info":"I like playing in my labrotory with chemical stuff to discover new things","name":"Marie Curie","phone":"232-435-235","seeking_job":false,"website":"marie0curie.herokuapp.com"}
+    {
+      "city":"Russia",
+      "facebook_line":"www.facebook.com/marie0curie",
+      "id":2,
+      "industry_id":2,
+      "info":"I like playing in my labrotory with chemical stuff to discover new things",
+      "name":"Marie Curie",
+      "phone":"232-435-235",
+      "seeking_job":false,
+      "website":"marie0curie.herokuapp.com"
+      }
     ],
-    "success":true,
-    "total_persons":1
+  "success":true,
+  "total_persons":1
 }
 ```
 
@@ -168,7 +247,7 @@ And Authentication Errors 401, 403
   {
     "id":11,
     "industry":"Food"
-  },
+    },
   "success":true
 }
 ```
@@ -184,11 +263,20 @@ And Authentication Errors 401, 403
 
 ```JSON
 {
-  "person":{
-    "city":"New Jersy","facebook_line":"www.facebook.com/jamie0sole","id":5,"industry_id":8,"info":null,"name":"Jamie Sole","phone":"864-029-546","seeking_job":true,"website":"jamie0sole.herokuapp.com"
-    },
-    "success":true
-  }
+  "person":
+  {
+    "city":"New Jersy",
+    "facebook_line":"www.facebook.com/jamie0sole",
+    "id":5,
+    "industry_id":8,
+    "info":null,
+    "name":"Jamie Sole",
+    "phone":"864-029-546",
+    "seeking_job":true,
+    "website":"jamie0sole.herokuapp.com"
+  },
+  "success":true
+}
 ```
 
 **PATCH /Persons/{person.id}**
