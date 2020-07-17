@@ -50,6 +50,16 @@ python test_app.py
 - Base URL For App: [Hosted APP on Heroku](https://john0isaac.herokuapp.com/)
 - Authentication: [Auth0 to Generate Tokens](https://enactus-ma.auth0.com/login?state=g6Fo2SBscGdJbzBPb0lKYlNxaUk0TWtvMzVlckoyb1NvOEU1ZaN0aWTZIHl5ZzBlU3NuTllkcWZZb0t3YW1rd0RXM1NQOWZRLVUwo2NpZNkgYXZtYlJYQWNDY1RicGQyWkt5Y1JOUmdnVEhSam5SajQ&client=avmbRXAcCcTbpd2ZKycRNRggTHRjnRj4&protocol=oauth2&audience=john0isaac&response_type=token&redirect_uri=http://locahost:8080)
 
+Before testing the live app export the manager and person tokens in your terminal session:
+
+```bash
+export Manager='eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImgwUFNENjhqQVhYa1ZudDZPeW9RdCJ9.eyJpc3MiOiJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA2OTE2NzQ1MDU5MzIyOTEwMzY3IiwiYXVkIjpbImpvaG4waXNhYWMiLCJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU5NDg2MzE3OSwiZXhwIjoxNTk0OTQ5NTc5LCJhenAiOiJhdm1iUlhBY0NjVGJwZDJaS3ljUk5SZ2dUSFJqblJqNCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6aW5kdXN0cmllcyIsImRlbGV0ZTpwZXJzb25zIiwiZ2V0OmluZHVzdHJpZXMgIiwiZ2V0OnBlcnNvbnMiLCJwYXRjaDpwZXJzb25zIiwicG9zdDppbmR1c3RyaWVzIiwicG9zdDpwZXJzb25zIl19.cg0fS7-I2yMT0_xn2Pu_S5H_sPCE2AligO7nXMuXIIu-JNciB_W64er1XGXl7OdGWisQ_A1yW6bk1qwZ0w7WnUg1fF86C7FrEf7sCdp3Gf4kMeM3wCAkZ9vD2irg0h1ISkDzlh3NEcFnZDggHDY_lJ6rNfX-f6ZLsUBqE9nJpM5R0sgpUnTSZI_fBZy2iT4veedwkwyXEtzPTs44x2GWPW8DXp6xPN1FAuZelW75swCwS8gF1FgCmcz4eb-tfYBUJ758FVIwU6SFmw4NfKSA02phaUkRgR_Ztx7IFgfixAL1vvQWjRX9f4wnQoeHurLTRVP5qWzwUy8EvnZ_09tQlQ'
+```
+
+```bash
+export Person='eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImgwUFNENjhqQVhYa1ZudDZPeW9RdCJ9.eyJpc3MiOiJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA3OTkyMDkxOTg1MzY4MTQ0NTExIiwiYXVkIjpbImpvaG4waXNhYWMiLCJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU5NDg2MzI0OCwiZXhwIjoxNTk0OTQ5NjQ4LCJhenAiOiJhdm1iUlhBY0NjVGJwZDJaS3ljUk5SZ2dUSFJqblJqNCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6cGVyc29ucyIsImdldDpwZXJzb25zIiwicGF0Y2g6cGVyc29ucyIsInBvc3Q6cGVyc29ucyJdfQ.PMmNWzFOxcLe7G5bbTDGxixKrzu4T9sxIHOpBuvC2SMAxUqODzGd0KENo5eMnsQUC2ujLfraoXXphZVek2kZCurkmU2VAO-OOzCynv5diANOjQ7Gb1YTlGcDuqhztg2g_rdqs-zsMsoJ4X4zKxcX8hrVY6mQiQCLgR1HkDIBa0uoo4jjjuGTwSdjqfx1AxTKcozrHSQiw6SM87Wi_AsHDmhbRosIsgWg6gz4LraJ8UVGwkGCRk7VNQUvrc1h8MoY4Lv59Aj1goPhMYbkstbqqDOkxsbAp6Jpm6whySh0wKXH-k4W5157QM53uvRuZXIrBM45GuVTK91_5NfQ1bkIXg'
+```
+
 ### Error handling
 
 Invoking any of the following errors will return a JSON object in this format:
@@ -73,14 +83,14 @@ And Authentication Errors 401, 403
 
 ### Endpoints
 
-**GET /categories**
+**GET /industries**
 
 * General:
 
   - Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
   - Request Arguments: None
   - Returns: An object with a single key, categories, that contains a object of id: category_string key:value pairs, success value.
-* Sample:`curl http://127.0.0.1:5000/categories`
+* Sample:`curl -H "Authorization: Bearer ${Manager}" https://john0isaac.herokuapp.com/industies`
 
 ```JSON
 {
@@ -292,7 +302,7 @@ And Authentication Errors 401, 403
   - Search for any question using the submitted search term which is a substring of the question.
   - Request Arguments: Search Term
   - Returns: current category, question, answer, category, difficulty, id, success value, total questions.
-* Sample:`curl http://127.0.0.1:5000/questions/search -X POST -H "Content-Type: application/json" -d '{"searchTerm": "pyramid"}'`
+* Sample:`curl -H "Authorization: Bearer ${Manager}" https://john0isaac.herokuapp.com/questions/search -X POST -H "Content-Type: application/json" -d '{"search": "pyramid"}'`
 
 ```JSON
 {

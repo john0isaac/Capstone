@@ -162,7 +162,7 @@ def create_app(test_config=None):
                 'persons': person.id
             }), 200
         except:
-            abort(422)
+            abort(404)
 
     @app.route('/persons/<int:id>', methods=['DELETE'])
     @requires_auth('delete:persons')

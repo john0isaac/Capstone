@@ -169,7 +169,32 @@ class JohnTestCase(unittest.TestCase):
         self.assertEqual(data['success'], False)
         self.assertEqual(data['message'], 'Token not found.')
 
+    def test_changing_the_name_of_a_person(self):
+        """Test changing the name of a person"""
+        res = self.client().patch('/persons/1', headers={'Authorization': 'Bearer ' +self.person}, json={'name': 'John Isaac'})
+        data = json.loads(res.data)
 
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(data['success'], True)
+        self.assertEqual(data['persons'], 1)
+
+    def test_404_changing_the_name_of_a_nonexistant_person(self):
+        """Test 404 changing the name of a nonexistant person"""
+        res = self.client().patch('/persons/4100', headers={'Authorization': 'Bearer ' +self.person}, json={'name': 'John Isaac'})
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 404)
+        self.assertEqual(data['success'], False)
+        self.assertEqual(data['message'], 'resourse not found')
+
+    def test_401_wrong_header_to_change_the_name(self):
+        """Test 401 wrong name to change the name"""
+        res = self.client().patch('/persons/4100', headers={'Authorization': 'Berer '+self.person}, json={'name': 'John Isaac'})
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 401 )
+        self.assertEqual(data['success'], False)
+        self.assertEqual(data['message'], 'Token not found.')
 
 # Make the tests conveniently executable
 if __name__ == "__main__":
