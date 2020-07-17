@@ -5,7 +5,7 @@ import os
 import json
 
 database_name = "capstone"
-database_path = 'postgres://dkwumawdfnauvf:d6751ef517be41d407e1ae8ad4f3a4b1b4985483e9b04c560f85987887b3915f@ec2-52-23-14-156.compute-1.amazonaws.com:5432/d9olq228b3mp9l'
+database_path = os.environ['DATABASE_URL']
 
 db = SQLAlchemy()
 
