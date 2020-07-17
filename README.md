@@ -12,11 +12,25 @@ The application can:
 
 Completing this app gave me the ability to structure plan, implement, and test an API - skills essential for enabling my future applications to communicate with others.
 
-## TO Start the APP
+### Installing Dependencies
 
-Start by reading the section below of this README:
+#### Python 3.8
 
-I recommend following the instructions in this files in order to be able to review the project.
+Follow instructions to install the latest version of python for your platform in the [python docs](https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python)
+
+#### Virtual Enviornment
+
+I recommend working within a virtual environment whenever using Python for projects. This keeps your dependencies for each project separate and organaized. Instructions for setting up a virual enviornment for your platform can be found in the [python docs](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
+
+#### PIP Dependencies
+
+Once you have your virtual environment setup and running, install dependencies by running:
+
+```bash
+pip install -r requirements.txt
+```
+
+This will install all of the required packages we selected within the `requirements.txt` file.
 
 ## Testing
 
@@ -33,8 +47,8 @@ python test_app.py
 
 ### Getting Started
 
-- Base URL For Backend: https://john0isaac.herokuapp.com
-- Authentication: https://enactus-ma.auth0.com/login?state=g6Fo2SBscGdJbzBPb0lKYlNxaUk0TWtvMzVlckoyb1NvOEU1ZaN0aWTZIHl5ZzBlU3NuTllkcWZZb0t3YW1rd0RXM1NQOWZRLVUwo2NpZNkgYXZtYlJYQWNDY1RicGQyWkt5Y1JOUmdnVEhSam5SajQ&client=avmbRXAcCcTbpd2ZKycRNRggTHRjnRj4&protocol=oauth2&audience=john0isaac&response_type=token&redirect_uri=http://locahost:8080
+- Base URL For App: [Hosted APP on Heroku](https://john0isaac.herokuapp.com/)
+- Authentication: [Auth0 to Generate Tokens](https://enactus-ma.auth0.com/login?state=g6Fo2SBscGdJbzBPb0lKYlNxaUk0TWtvMzVlckoyb1NvOEU1ZaN0aWTZIHl5ZzBlU3NuTllkcWZZb0t3YW1rd0RXM1NQOWZRLVUwo2NpZNkgYXZtYlJYQWNDY1RicGQyWkt5Y1JOUmdnVEhSam5SajQ&client=avmbRXAcCcTbpd2ZKycRNRggTHRjnRj4&protocol=oauth2&audience=john0isaac&response_type=token&redirect_uri=http://locahost:8080)
 
 ### Error handling
 
@@ -53,6 +67,9 @@ The API will return three error types when request fail:
 - 400: Bad Request
 - 405: Method Not Allowed
 - 422: Not Processable
+- 404: Resourse Not Found
+
+And Authentication Errors 401, 403
 
 ### Endpoints
 
