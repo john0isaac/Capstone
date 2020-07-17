@@ -82,6 +82,15 @@ class JohnTestCase(unittest.TestCase):
         self.assertEqual(data['success'], False)
         self.assertEqual(data['message'], 'unprocessable')   
 
+    def test_403_unauthorized_creation_of_new_industry(self):
+        """test 403 unauthorized creation of new question"""
+        res = self.client().post('/industries', headers={'Authorization': 'Bearer ' +self.person}, json=self.new_industry)
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 403 )
+        self.assertEqual(data['success'], False)
+        self.assertEqual(data['message'], 'Permissions not found.')
+
     def test_create_new_person(self):
         """test create new person"""
         res = self.client().post('/persons', headers={'Authorization': 'Bearer ' +self.person}, json=self.new_person)
@@ -99,6 +108,15 @@ class JohnTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 422)
         self.assertEqual(data['success'], False)
         self.assertEqual(data['message'], 'unprocessable') 
+
+    def test_401_no_auth_to_create_new_person(self):
+        """test 401 no auth to create new person"""
+        res = self.client().post('/persons', json=self.new_person)
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 401 )
+        self.assertEqual(data['success'], False)
+        self.assertEqual(data['message'], 'Authorization header is expected.')
 
     def test_retrive_industry(self):
         """Test retrieve industry"""
@@ -119,6 +137,39 @@ class JohnTestCase(unittest.TestCase):
         self.assertEqual(data['success'], True)
         self.assertTrue(data['persons'])
         self.assertTrue(data['total_persons'])
+
+    def test_search_for_a_person(self):
+        """Test search for a person"""
+        res = self.client().post('/persons/search', headers={'Authorization': 'Bearer ' +self.manager}, json={'search': 'engineer'})
+        data = json.loads(res.data)
+        
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(data['success'], True)
+        self.assertTrue(data['persons'])
+        self.assertEqual(data['current_industry'], [1])
+        self.assertEqual(data['total_persons'], 1)
+    
+    def test_search_for_non_existant_person(self):
+        """Test search for a non existant person"""
+        res = self.client().post('/persons/search', headers={'Authorization': 'Bearer ' +self.person}, json={'search': 'maker'})
+        data = json.loads(res.data)
+        
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(data['success'], True)
+        self.assertEqual(data['persons'], [])
+        self.assertEqual(data['current_industry'], [])
+        self.assertEqual(data['total_persons'], 0)
+
+    def test_401_no_token_to_search_for_a_person(self):
+        """Test 401 no token to search for a person"""
+        res = self.client().post('/persons/search', headers={'Authorization': 'Bearer '}, json={'search': 'engineer'})
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 401 )
+        self.assertEqual(data['success'], False)
+        self.assertEqual(data['message'], 'Token not found.')
+
+
 
 # Make the tests conveniently executable
 if __name__ == "__main__":
