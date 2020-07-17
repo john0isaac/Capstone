@@ -114,6 +114,16 @@ ALTER TABLE ONLY public.person ALTER COLUMN id SET DEFAULT nextval('public.perso
 --
 
 COPY public.industries (id, industry) FROM stdin;
+1	Accountants
+2	Agriculture
+3	Airlines
+4	Banking
+5	Construction
+6	Dairy
+7	Education
+8	Farming
+9	Health
+10	Labor
 \.
 
 
@@ -122,6 +132,10 @@ COPY public.industries (id, industry) FROM stdin;
 --
 
 COPY public.person (id, name, info, city, phone, website, facebook_link, seeking_job, industry_id) FROM stdin;
+1	John Isaac	I like reading books a lot and i like going to the institue of arts to watch cute things	Cairo	451-879-454	john0isaac.herokuapp.com	www.facebook.com/john0isaac	t	3
+2	Marie Curie	I like playing in my labrotory with chemical stuff to discover new things	Russia	232-435-235	marie0curie.herokuapp.com	www.facebook.com/marie0curie	f	2
+3	Albert Einstein	I like the concept of time and that it is relative to other things can be different	America	294-234-233	albert0einstein.herokuapp.com	www.facebook.com/albert0einstein	f	1
+4	James Charles	My mother used to say to me that one day i will be an amazing man	Ohio	342-644-646	james0charles.herokuapp.com	www.facebook.com/james0charles	t	4
 \.
 
 
@@ -129,14 +143,14 @@ COPY public.person (id, name, info, city, phone, website, facebook_link, seeking
 -- Name: industries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.industries_id_seq', 1, false);
+SELECT pg_catalog.setval('public.industries_id_seq', 10, true);
 
 
 --
 -- Name: person_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.person_id_seq', 1, false);
+SELECT pg_catalog.setval('public.person_id_seq', 4, true);
 
 
 --

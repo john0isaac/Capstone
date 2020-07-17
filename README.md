@@ -53,11 +53,11 @@ python test_app.py
 Before testing the live app export the manager and person tokens in your terminal session:
 
 ```bash
-export Manager='eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImgwUFNENjhqQVhYa1ZudDZPeW9RdCJ9.eyJpc3MiOiJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA2OTE2NzQ1MDU5MzIyOTEwMzY3IiwiYXVkIjpbImpvaG4waXNhYWMiLCJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU5NDg2MzE3OSwiZXhwIjoxNTk0OTQ5NTc5LCJhenAiOiJhdm1iUlhBY0NjVGJwZDJaS3ljUk5SZ2dUSFJqblJqNCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6aW5kdXN0cmllcyIsImRlbGV0ZTpwZXJzb25zIiwiZ2V0OmluZHVzdHJpZXMgIiwiZ2V0OnBlcnNvbnMiLCJwYXRjaDpwZXJzb25zIiwicG9zdDppbmR1c3RyaWVzIiwicG9zdDpwZXJzb25zIl19.cg0fS7-I2yMT0_xn2Pu_S5H_sPCE2AligO7nXMuXIIu-JNciB_W64er1XGXl7OdGWisQ_A1yW6bk1qwZ0w7WnUg1fF86C7FrEf7sCdp3Gf4kMeM3wCAkZ9vD2irg0h1ISkDzlh3NEcFnZDggHDY_lJ6rNfX-f6ZLsUBqE9nJpM5R0sgpUnTSZI_fBZy2iT4veedwkwyXEtzPTs44x2GWPW8DXp6xPN1FAuZelW75swCwS8gF1FgCmcz4eb-tfYBUJ758FVIwU6SFmw4NfKSA02phaUkRgR_Ztx7IFgfixAL1vvQWjRX9f4wnQoeHurLTRVP5qWzwUy8EvnZ_09tQlQ'
+export Manager='eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImgwUFNENjhqQVhYa1ZudDZPeW9RdCJ9.eyJpc3MiOiJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA2OTE2NzQ1MDU5MzIyOTEwMzY3IiwiYXVkIjpbImpvaG4waXNhYWMiLCJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU5NDk1MTY1OCwiZXhwIjoxNTk1MDM4MDU4LCJhenAiOiJhdm1iUlhBY0NjVGJwZDJaS3ljUk5SZ2dUSFJqblJqNCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6aW5kdXN0cmllcyIsImRlbGV0ZTpwZXJzb25zIiwiZ2V0OmluZHVzdHJpZXMgIiwiZ2V0OnBlcnNvbnMiLCJwYXRjaDpwZXJzb25zIiwicG9zdDppbmR1c3RyaWVzIiwicG9zdDpwZXJzb25zIl19.hihXPgBibFFYUTpjEryLnRMEY_ADGf9_A98PwaRzpCYwePOcXYHvK1sN0YGfvFHfyWsIfTH_xO6ErbNIk5eEEJ1nYeWcIt74NC06YLOV0HVex4QsMImxBGaUh7wdKi16iFbN8TFjliJOnsGlqaDFTePR_hNIuamBcs-hG3X_ULMIyOVI6AXq2lMxS82f-PRG1-YgDd5FYit-NXdWeJAjKPdNRRICAS7aBYj3zrEOCQXrHv415WtSukjahZLL2_zSNS4oMsG8WRWcZ5O2wXNui3Uw_6ZKuiHb2XYSEKsEtdXZEgjfksk6n5Y01wfMvHTmdU7q5Lh6Xdqh8I3hjtUuuQ'
 ```
 
 ```bash
-export Person='eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImgwUFNENjhqQVhYa1ZudDZPeW9RdCJ9.eyJpc3MiOiJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA3OTkyMDkxOTg1MzY4MTQ0NTExIiwiYXVkIjpbImpvaG4waXNhYWMiLCJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU5NDg2MzI0OCwiZXhwIjoxNTk0OTQ5NjQ4LCJhenAiOiJhdm1iUlhBY0NjVGJwZDJaS3ljUk5SZ2dUSFJqblJqNCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6cGVyc29ucyIsImdldDpwZXJzb25zIiwicGF0Y2g6cGVyc29ucyIsInBvc3Q6cGVyc29ucyJdfQ.PMmNWzFOxcLe7G5bbTDGxixKrzu4T9sxIHOpBuvC2SMAxUqODzGd0KENo5eMnsQUC2ujLfraoXXphZVek2kZCurkmU2VAO-OOzCynv5diANOjQ7Gb1YTlGcDuqhztg2g_rdqs-zsMsoJ4X4zKxcX8hrVY6mQiQCLgR1HkDIBa0uoo4jjjuGTwSdjqfx1AxTKcozrHSQiw6SM87Wi_AsHDmhbRosIsgWg6gz4LraJ8UVGwkGCRk7VNQUvrc1h8MoY4Lv59Aj1goPhMYbkstbqqDOkxsbAp6Jpm6whySh0wKXH-k4W5157QM53uvRuZXIrBM45GuVTK91_5NfQ1bkIXg'
+export Person='eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImgwUFNENjhqQVhYa1ZudDZPeW9RdCJ9.eyJpc3MiOiJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA3OTkyMDkxOTg1MzY4MTQ0NTExIiwiYXVkIjpbImpvaG4waXNhYWMiLCJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU5NDk1MjExMiwiZXhwIjoxNTk1MDM4NTEyLCJhenAiOiJhdm1iUlhBY0NjVGJwZDJaS3ljUk5SZ2dUSFJqblJqNCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6cGVyc29ucyIsImdldDpwZXJzb25zIiwicGF0Y2g6cGVyc29ucyIsInBvc3Q6cGVyc29ucyJdfQ.bWmwYON5GYNKbObCJSFi-dLfmYocxoaY0ZZz4p_eyxUkPXiHL9-amOaGI4Um-SFYv6vvYlrqFLAY8N0HbbG4SFsin-Wog863xw5YYj-g7uV8s1KrkajOQ3LqkrM41VFT22WIm0Ypm-KDhue4vDeGrCjd1_mQqCQauWqhe6JxuIRtNODjK1XMbQbvrUqDld4It5P90tmtDo9-5BUJKai3lau6Ot9nee2qFM407RU_CS_WgTtCaUIeGuoSh2E5i0oOVlxf9lzyLnfBnjwACJbOBUU8NXj5EclWGtYf1Avjr94jPhabgBJkWIqWfRtSur5HKA6843GOHDlv-yulrR4ADw'
 ```
 
 ### Error handling
@@ -346,3 +346,27 @@ And Authentication Errors 401, 403
   "success": true
 }
 ```
+curl http://127.0.0.1:5000/persons/14 -X PATCH -H "Content-Type: application/json" -d '{"seeking_job":true}'
+
+curl http://127.0.0.1:5000/persons/14 -X PATCH -H "Content-Type: application/json" -d '{"seeking_job":false, "industry_id":23}'
+
+
+ curl http://127.0.0.1:5000/persons/14 -X PATCH -H "Content-Type: application/json" -d '{"seeking_job":true, "industry_id":23}'
+
+curl http://127.0.0.1:5000/persons/14 -X PATCH -H "Content-Type: application/json" -d '{"name":"tata mama", "city":"New Jersy", "phone":"864-029-546", "website":"tata0mama.herokuapp.com", "facebook_link":"www.facebook.com/tata0mama", "seeking_job":true, "industry_id":23, "info": "hey there iam using whatsapp"}'
+
+curl http://127.0.0.1:5000/persons/14 -X PATCH -H "Content-Type: application/json" -d '{"seeking_job":true}'
+
+curl http://127.0.0.1:5000/persons/search -X POST -H "Content-Type: application/json" -d '{"search":"whatsapp"}'
+
+curl http://127.0.0.1:5000/persons/14 -X PATCH -H "Content-Type: application/json" -d '{"name":"tata mama", "city":"New Jersy", "phone":"864-029-546", "website":"tata0mama.herokuapp.com", "facebook_link":"www.facebook.com/tata0mama", "seeking_job":false, "industry_id":23, "info": "hey there iam using whatsapp"}'
+
+curl http://127.0.0.1:5000/persons -X POST -H "Content-Type: application/json" -d '{"name":"tata mama", "city":"New Jersy", "phone":"864-029-546", "website":"tata0mama.herokuapp.com", "facebook_link":"www.facebook.com/tata0mama", "seeking_job":true, "industry_id":23}'
+
+curl http://127.0.0.1:5000/persons/search -X POST -H "Content-Type: application/json" -d '{"search":"like"}'
+
+curl http://127.0.0.1:5000/industries -X POST -H "Content-Type: application/json" -d '{"industry":"toto"}'
+
+curl http://127.0.0.1:5000/industries?page=2
+
+curl http://127.0.0.1:5000/industries

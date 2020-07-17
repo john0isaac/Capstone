@@ -32,8 +32,8 @@ class JohnTestCase(unittest.TestCase):
         self.new_industry = {
             'industry': 'Engineering',
         }
-        self.manager = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImgwUFNENjhqQVhYa1ZudDZPeW9RdCJ9.eyJpc3MiOiJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA2OTE2NzQ1MDU5MzIyOTEwMzY3IiwiYXVkIjpbImpvaG4waXNhYWMiLCJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU5NDg2MzE3OSwiZXhwIjoxNTk0OTQ5NTc5LCJhenAiOiJhdm1iUlhBY0NjVGJwZDJaS3ljUk5SZ2dUSFJqblJqNCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6aW5kdXN0cmllcyIsImRlbGV0ZTpwZXJzb25zIiwiZ2V0OmluZHVzdHJpZXMgIiwiZ2V0OnBlcnNvbnMiLCJwYXRjaDpwZXJzb25zIiwicG9zdDppbmR1c3RyaWVzIiwicG9zdDpwZXJzb25zIl19.cg0fS7-I2yMT0_xn2Pu_S5H_sPCE2AligO7nXMuXIIu-JNciB_W64er1XGXl7OdGWisQ_A1yW6bk1qwZ0w7WnUg1fF86C7FrEf7sCdp3Gf4kMeM3wCAkZ9vD2irg0h1ISkDzlh3NEcFnZDggHDY_lJ6rNfX-f6ZLsUBqE9nJpM5R0sgpUnTSZI_fBZy2iT4veedwkwyXEtzPTs44x2GWPW8DXp6xPN1FAuZelW75swCwS8gF1FgCmcz4eb-tfYBUJ758FVIwU6SFmw4NfKSA02phaUkRgR_Ztx7IFgfixAL1vvQWjRX9f4wnQoeHurLTRVP5qWzwUy8EvnZ_09tQlQ'
-        self.person = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImgwUFNENjhqQVhYa1ZudDZPeW9RdCJ9.eyJpc3MiOiJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA3OTkyMDkxOTg1MzY4MTQ0NTExIiwiYXVkIjpbImpvaG4waXNhYWMiLCJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU5NDg2MzI0OCwiZXhwIjoxNTk0OTQ5NjQ4LCJhenAiOiJhdm1iUlhBY0NjVGJwZDJaS3ljUk5SZ2dUSFJqblJqNCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6cGVyc29ucyIsImdldDpwZXJzb25zIiwicGF0Y2g6cGVyc29ucyIsInBvc3Q6cGVyc29ucyJdfQ.PMmNWzFOxcLe7G5bbTDGxixKrzu4T9sxIHOpBuvC2SMAxUqODzGd0KENo5eMnsQUC2ujLfraoXXphZVek2kZCurkmU2VAO-OOzCynv5diANOjQ7Gb1YTlGcDuqhztg2g_rdqs-zsMsoJ4X4zKxcX8hrVY6mQiQCLgR1HkDIBa0uoo4jjjuGTwSdjqfx1AxTKcozrHSQiw6SM87Wi_AsHDmhbRosIsgWg6gz4LraJ8UVGwkGCRk7VNQUvrc1h8MoY4Lv59Aj1goPhMYbkstbqqDOkxsbAp6Jpm6whySh0wKXH-k4W5157QM53uvRuZXIrBM45GuVTK91_5NfQ1bkIXg'
+        self.manager = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImgwUFNENjhqQVhYa1ZudDZPeW9RdCJ9.eyJpc3MiOiJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA2OTE2NzQ1MDU5MzIyOTEwMzY3IiwiYXVkIjpbImpvaG4waXNhYWMiLCJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU5NDk1MTY1OCwiZXhwIjoxNTk1MDM4MDU4LCJhenAiOiJhdm1iUlhBY0NjVGJwZDJaS3ljUk5SZ2dUSFJqblJqNCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6aW5kdXN0cmllcyIsImRlbGV0ZTpwZXJzb25zIiwiZ2V0OmluZHVzdHJpZXMgIiwiZ2V0OnBlcnNvbnMiLCJwYXRjaDpwZXJzb25zIiwicG9zdDppbmR1c3RyaWVzIiwicG9zdDpwZXJzb25zIl19.hihXPgBibFFYUTpjEryLnRMEY_ADGf9_A98PwaRzpCYwePOcXYHvK1sN0YGfvFHfyWsIfTH_xO6ErbNIk5eEEJ1nYeWcIt74NC06YLOV0HVex4QsMImxBGaUh7wdKi16iFbN8TFjliJOnsGlqaDFTePR_hNIuamBcs-hG3X_ULMIyOVI6AXq2lMxS82f-PRG1-YgDd5FYit-NXdWeJAjKPdNRRICAS7aBYj3zrEOCQXrHv415WtSukjahZLL2_zSNS4oMsG8WRWcZ5O2wXNui3Uw_6ZKuiHb2XYSEKsEtdXZEgjfksk6n5Y01wfMvHTmdU7q5Lh6Xdqh8I3hjtUuuQ'
+        self.person = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImgwUFNENjhqQVhYa1ZudDZPeW9RdCJ9.eyJpc3MiOiJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA3OTkyMDkxOTg1MzY4MTQ0NTExIiwiYXVkIjpbImpvaG4waXNhYWMiLCJodHRwczovL2VuYWN0dXMtbWEuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTU5NDk1MjExMiwiZXhwIjoxNTk1MDM4NTEyLCJhenAiOiJhdm1iUlhBY0NjVGJwZDJaS3ljUk5SZ2dUSFJqblJqNCIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6cGVyc29ucyIsImdldDpwZXJzb25zIiwicGF0Y2g6cGVyc29ucyIsInBvc3Q6cGVyc29ucyJdfQ.bWmwYON5GYNKbObCJSFi-dLfmYocxoaY0ZZz4p_eyxUkPXiHL9-amOaGI4Um-SFYv6vvYlrqFLAY8N0HbbG4SFsin-Wog863xw5YYj-g7uV8s1KrkajOQ3LqkrM41VFT22WIm0Ypm-KDhue4vDeGrCjd1_mQqCQauWqhe6JxuIRtNODjK1XMbQbvrUqDld4It5P90tmtDo9-5BUJKai3lau6Ot9nee2qFM407RU_CS_WgTtCaUIeGuoSh2E5i0oOVlxf9lzyLnfBnjwACJbOBUU8NXj5EclWGtYf1Avjr94jPhabgBJkWIqWfRtSur5HKA6843GOHDlv-yulrR4ADw'
         # binds the app to the current context
         with self.app.app_context():
             self.db = SQLAlchemy()
@@ -169,9 +169,9 @@ class JohnTestCase(unittest.TestCase):
         self.assertEqual(data['success'], False)
         self.assertEqual(data['message'], 'Token not found.')
 
-    def test_changing_the_name_of_a_person(self):
-        """Test changing the name of a person"""
-        res = self.client().patch('/persons/1', headers={'Authorization': 'Bearer ' +self.person}, json={'name': 'John Isaac'})
+    def test_changing_the_city_of_a_person(self):
+        """Test changing the city of a person"""
+        res = self.client().patch('/persons/1', headers={'Authorization': 'Bearer ' +self.person}, json={'city': 'Cairo'})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -189,12 +189,66 @@ class JohnTestCase(unittest.TestCase):
 
     def test_401_wrong_header_to_change_the_name(self):
         """Test 401 wrong name to change the name"""
-        res = self.client().patch('/persons/4100', headers={'Authorization': 'Berer '+self.person}, json={'name': 'John Isaac'})
+        res = self.client().patch('/persons/1', headers={'Authorization': 'Berer '+self.person}, json={'name': 'John Isaac'})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 401 )
         self.assertEqual(data['success'], False)
-        self.assertEqual(data['message'], 'Token not found.')
+        self.assertEqual(data['message'], 'Authorization header must start with "Bearer".')
+
+    def test_delete_a_person(self):
+        """Test delete a person"""
+        res = self.client().delete('/persons/1', headers={'Authorization': 'Bearer '+self.person})
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(data['success'], True)
+        self.assertEqual(data['delete'], 1)
+
+    def test_delete_nonexistant_person(self):
+        """Test delete nonexistant person"""
+        res = self.client().delete('/persons/10000', headers={'Authorization': 'Bearer '+self.person})
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 404)
+        self.assertEqual(data['success'], False)
+        self.assertEqual(data['message'], 'resourse not found')
+    
+    def test_403_unauthorized_deletion_of_person(self):
+        """Test 403 unauthorized deletion of person"""
+        res = self.client().delete('/persons/1')
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 401 )
+        self.assertEqual(data['success'], False)
+        self.assertEqual(data['message'], 'Authorization header is expected.')
+
+    def test_delete_an_industry(self):
+        """Test delete an industry"""
+        res = self.client().delete('/industries/1', headers={'Authorization': 'Bearer '+self.manager})
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(data['success'], True)
+        self.assertEqual(data['delete'], 1)
+
+    def test_delete_nonexistant_industry(self):
+        """Test delete nonexistant industry"""
+        res = self.client().delete('/industries/50000', headers={'Authorization': 'Bearer '+self.manager})
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 404)
+        self.assertEqual(data['success'], False)
+        self.assertEqual(data['message'], 'resourse not found')
+
+    def test_403_unauthorized_deletion_of_industry(self):
+        """Test 403 unauthorized deletion of industry"""
+        res = self.client().delete('/industries/1', headers={'Authorization': 'Bearer '+self.person})
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 403 )
+        self.assertEqual(data['success'], False)
+        self.assertEqual(data['message'], 'Permissions not found.')
 
 # Make the tests conveniently executable
 if __name__ == "__main__":
