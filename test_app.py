@@ -45,25 +45,6 @@ class JohnTestCase(unittest.TestCase):
         """Executed after each test"""
         pass
 
-    
-    def test_404_no_persons_found_to_retrieve(self):
-        """Test 404 no persons found to retrieve"""
-        res = self.client().get('/persons', headers={'Authorization': 'Bearer ' +self.manager})
-        data = json.loads(res.data)
-
-        self.assertEqual(res.status_code, 404)
-        self.assertEqual(data['success'], False)
-        self.assertEqual(data['message'], 'resourse not found')
-    
-    def test_404_no_industries_found_to_retrieve(self):
-        """Test 404 no data found to retrieve"""
-        res = self.client().get('/industries', headers={'Authorization': 'Bearer ' +self.manager})
-        data = json.loads(res.data)
-
-        self.assertEqual(res.status_code, 404)
-        self.assertEqual(data['success'], False)
-        self.assertEqual(data['message'], 'resourse not found')
-
     def test_create_new_industry(self):
         """test create new question"""
         res = self.client().post('/industries', headers={'Authorization': 'Bearer ' +self.manager}, json=self.new_industry)
@@ -140,14 +121,14 @@ class JohnTestCase(unittest.TestCase):
 
     def test_search_for_a_person(self):
         """Test search for a person"""
-        res = self.client().post('/persons/search', headers={'Authorization': 'Bearer ' +self.manager}, json={'search': 'engineer'})
+        res = self.client().post('/persons/search', headers={'Authorization': 'Bearer ' +self.manager}, json={'search': 'like'})
         data = json.loads(res.data)
         
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
         self.assertTrue(data['persons'])
-        self.assertEqual(data['current_industry'], [1])
-        self.assertEqual(data['total_persons'], 1)
+        self.assertTrue(data['current_industry'])
+        self.assertTrue(data['total_persons'])
     
     def test_search_for_non_existant_person(self):
         """Test search for a non existant person"""
@@ -198,12 +179,12 @@ class JohnTestCase(unittest.TestCase):
 
     def test_delete_a_person(self):
         """Test delete a person"""
-        res = self.client().delete('/persons/1', headers={'Authorization': 'Bearer '+self.person})
+        res = self.client().delete('/persons/5', headers={'Authorization': 'Bearer '+self.person})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
-        self.assertEqual(data['delete'], 1)
+        self.assertEqual(data['delete'], 5)
 
     def test_delete_nonexistant_person(self):
         """Test delete nonexistant person"""
@@ -225,12 +206,12 @@ class JohnTestCase(unittest.TestCase):
 
     def test_delete_an_industry(self):
         """Test delete an industry"""
-        res = self.client().delete('/industries/1', headers={'Authorization': 'Bearer '+self.manager})
+        res = self.client().delete('/industries/11', headers={'Authorization': 'Bearer '+self.manager})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
-        self.assertEqual(data['delete'], 1)
+        self.assertEqual(data['delete'], 11)
 
     def test_delete_nonexistant_industry(self):
         """Test delete nonexistant industry"""
